@@ -42,5 +42,16 @@ def get_list_elements():
     return {"characters": characters}
 
 
+@app.route("/locations")
+def get_locations():
+    url = "https://rickandmortyapi.com/api/location"
+    response = urllib.request.urlopen(url)
+
+    data = response.read()
+    dict = json.loads(data)
+
+    return render_template("locations.html", locations=dict["results"])
+
+
 if __name__ == "__main__":
     app.run(debug=True)
