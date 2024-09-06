@@ -52,6 +52,15 @@ def get_locations():
 
     return render_template("locations.html", locations=dict["results"])
 
+@app.route("/episodes")
+def get_episodes():
+    url = "https://rickandmortyapi.com/api/episode"  
+    response = urllib.request.urlopen(url)
+    data = response.read()
+    dict = json.loads(data)
+
+    return render_template("episodes.html", episodes=dict["results"])
+
 
 if __name__ == "__main__":
     app.run(debug=True)
