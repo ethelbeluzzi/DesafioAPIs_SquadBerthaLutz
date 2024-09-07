@@ -2,3 +2,5 @@ venv*/
 env*/
 .venv*/
 .mypy_cache/
+.venv/
+__pycache__/

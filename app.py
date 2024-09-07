@@ -13,6 +13,7 @@ def get_list_characters_page():
     data = response.read()
     dict = json.loads(data)
 
+
     return render_template("characters.html", characters=dict["results"])
 
 
@@ -23,8 +24,19 @@ def get_profile(id):
     data = response.read()
     dict = json.loads(data)
 
-    return render_template("profile.html", profile=dict)
+    episodes = []
+    for episode in dict["episode"]:
+        episode_url = episode
+        episode_response = urllib.request.urlopen(episode_url)
+        episode_data = episode_response.read()
+        episode_dict = json.loads(episode_data)
+        episodes.append({
+            "name": episode_dict["name"],
+            "id": episode_dict["id"]
+        })
+    dict["episode"] = episodes
 
+    return render_template("profile.html", profile=dict)
 
 @app.route("/list")
 def get_list_elements():
@@ -97,6 +109,7 @@ def get_episode(id):
             "id": character_dict["id"]
         })
     dict["characters"] = characters
+
     return render_template("episode.html", episode=dict)
 
 
