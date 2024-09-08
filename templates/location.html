@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<div class="row">
+    <h2>{{location.name}}</h2>
+    <div class="mt-5">
+        <table class="table table-striped table-hover table-bordered text-center">
+            <thead>
+                <tr>
+                    <th scope="row">Nome</th>
+                    <td scope="col">{{ location.name }}</th>
+                </tr>
+                <tr>
+                    <th scope="row">Tipo</th>
+                    <td scope="col">{{ location.type }}</th>
+                </tr>
+                <tr>
+                    <th scope="row">Dimensão</th>
+                    <td scope="col">{{ location.dimension }}</th>
+                </tr>
+            </thead>
+        </table>
+        <table class="table table-striped table-hover table-bordered text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Residentes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for resident in location.residents %}
+                <tr>
+                    <td><a class="link-info" href="/profile/{{resident.id}}">{{resident.name}}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>          
+    </div>
+</div>
+{% endblock %}
