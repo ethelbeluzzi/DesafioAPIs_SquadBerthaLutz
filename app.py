@@ -23,6 +23,18 @@ def get_profile(id):
     data = response.read()
     dict = json.loads(data)
 
+    episodes = []
+    for episode in dict["episode"]:
+        episode_url = episode
+        episode_response = urllib.request.urlopen(episode_url)
+        episode_data = episode_response.read()
+        episode_dict = json.loads(episode_data)
+        episodes.append({
+            "name": episode_dict["name"],
+            "id": episode_dict["id"]
+        })
+    dict["episode"] = episodes
+
     return render_template("profile.html", profile=dict)
 
 

@@ -3,12 +3,59 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-sm-3 col-6">
-        <img src="{{profile.image}}" alt="{{profile.name}}" class="img-fluid img-thumbnail" />
-
-    </div>
-    <div class="col-sm-3 col-6">
-        <h1 class="h2">{{profile.name}}</h2>
+ <div class="container-fluid">
+        <div class="col-4">
+            <h1 class="h2">{{profile.name}}</h1>
+            <img src="{{profile.image}}" alt="{{profile.name}}" class="img-fluid img-thumbnail" />
+        </div>
+        <div class="col">
+            <table class="table table-striped table-hover table-bordered text-center w-100">
+                <thead>
+                    <tr>
+                        <th scope="row">Origem</th>
+                        <td scope="col">
+                            <a class="link-info" href="{{ url_for('get_location', id=profile.origin.url.split('/')[-1]) }}">
+                                {{ profile.origin.name }}
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Localização atual</th>
+                        <td scope="col">
+                            <a class="link-info" href="{{ url_for('get_location', id=profile.location.url.split('/')[-1]) }}">
+                                {{ profile.location.name }}
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Origem</th>
+                        <td scope="col">
+                            <a class="link-info" href="{{ url_for('get_location', id=profile.origin.url.split('/')[-1]) }}">
+                                {{ profile.origin.name }}
+                            </a>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </div>
 </div>
+<table class="table table-striped table-hover table-bordered text-center w-100">
+    <thead>
+        <tr>
+            <th scope="col">Episódios</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for episode in profile.episode %}
+        <tr>
+            <td>
+                <a class="link-info" href="{{ url_for('get_episode', id=episode.id) }}">
+                    {{ episode.name }}
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
