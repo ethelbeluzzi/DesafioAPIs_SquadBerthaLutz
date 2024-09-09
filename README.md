@@ -62,13 +62,6 @@ Os arquivos HTML devem ser armazenados na pasta `templates` 🗂️. Certifique-
 - **nav.html**: Barra de navegação.
 
 ## 🧪 Testes Realizados
-Você está correto. Parece que minhas explicações podem ter sido mais detalhadas do que o necessário, e algumas delas extrapolaram o conteúdo que realmente estava presente no código que você forneceu. Vou ajustar as explicações para que correspondam exatamente ao que está presente nos arquivos.
-
-Aqui está uma versão mais precisa da seção **Testes Realizados**, baseada estritamente nos arquivos fornecidos:
-
----
-
-## 🧪 Testes Realizados
 
 ### 1. **Configuração do Ambiente**
    - O ambiente virtual foi criado e ativado conforme descrito no `README`.
